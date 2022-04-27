@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1C5476;
+  width: 100%;
+  height: 60px;
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.486); 
+
+  .left {
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+  }
+
+  .right {
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+  }
+}
