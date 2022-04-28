@@ -1,22 +1,23 @@
 .container {
   display: flex;
-  position: fixed;
   justify-content: space-between;
   align-items: center;
   background-color: #1C5476;
-  width: 100%;
+  width: auto;
   height: 60px;
   box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.486); 
 
-  .left {
+  .innerContainer {
     display: flex;
     gap: 1rem;
-    padding-left: 1rem;
+    padding: 1rem;
+    align-items: center;
   }
+}
 
-  .right {
-    display: flex;
-    gap: 1rem;
-    padding-left: 1rem;
-  }
+.searchBar {
+  display: flex;
+  gap: 1rem;
+  padding-left: 1rem;
+  align-items: center; 
 }

@@ -1,22 +1,30 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import Search from './Search'
+import { CgProfile } from 'react-icons/cg'
+import { Switch } from '@mui/material'
+import SearchBar from './SearchBar'
 import styles from './Header.module.scss'
 
 function Header(props) {
+  const [checked, setChecked] = useState(false)
+  const switchHandler = () => {
+    setChecked(!checked)
+  }
+
   return (
     <nav className={styles.container}>
-      <div className={styles.left}>
-        <GiHamburgerMenu style={{color: 'white'}} />
-        <Search />
+      <div className={styles.innerContainer}>
+        <GiHamburgerMenu style={{color: 'white', transform: 'scale(2)'}} />
+        <SearchBar />
       </div>
-      <div className={styles.right}>
-        <div>
-          Theme Selector
-        </div>
-        <div>
-          Avatar
-        </div>
+      <div className={styles.innerContainer}>
+        <Switch
+          checked={true}
+          onChange={() => switchHandler()}
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
+        <CgProfile style={{transform: 'scale(2)'}}/>
       </div>
     </nav>
   )
