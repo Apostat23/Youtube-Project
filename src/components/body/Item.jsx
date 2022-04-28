@@ -2,7 +2,6 @@ import styles from './Body.module.scss'
 import PropTypes from 'prop-types'
 
 function Item({title, description, thumbnails}) {
-  console.log(thumbnails.default)
   return (
     <div className={styles.video}>
       <p> { title } </p>
