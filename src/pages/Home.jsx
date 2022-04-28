@@ -6,6 +6,7 @@ function Home(props) {
   return (
     <div>
       <Header />
+      <br />
       <Body />
     </div>
   )
