@@ -5,18 +5,15 @@ import { CgProfile } from 'react-icons/cg'
 import { Switch } from '@mui/material'
 import SearchBar from './SearchBar'
 import styles from './Header.module.scss'
-
-function Header(props) {
+function Header({setList}) {
   const [checked, setChecked] = useState(false)
-  const switchHandler = () => {
-    setChecked(!checked)
-  }
+  const switchHandler = () => { setChecked(!checked) }
 
   return (
     <nav className={styles.container}>
       <div className={styles.innerContainer}>
         <GiHamburgerMenu style={{color: 'white', transform: 'scale(2)'}} />
-        <SearchBar />
+        <SearchBar setList={setList}/>
       </div>
       <div className={styles.innerContainer}>
         <Switch
