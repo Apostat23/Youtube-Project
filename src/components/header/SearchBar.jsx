@@ -2,12 +2,16 @@ import PropTypes from 'prop-types';
 import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
 import { GiMagnifyingGlass } from 'react-icons/gi';
-import { useDataFetch } from '../../hooks/useDataFetch';
+// import { useDataFetch } from '../../hooks/useDataFetch';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchVideo } from '../../store/services/videoService';
 import styled from 'styled-components';
 
 function SearchBar({ setList }) {
-  const [data, fetchData] = useDataFetch();
+  // const [data, fetchData] = useDataFetch();
+  const dispatch = useDispatch();
   const [input, setInput] = useState('');
+
   const Input = styled.input`
     background: none;
     border: none;
@@ -36,15 +40,16 @@ function SearchBar({ setList }) {
   };
   const submitHandler = (event) => {
     event.preventDefault();
-    fetchData(
-      // eslint-disable-next-line max-len
-      `https://youtube.googleapis.com/youtube/v3/search?&q=${input}&part=snippet&key=${process.env.REACT_APP_YOUTUBE_APY_KEY}&maxResults=20`
-    );
+    dispatch(fetchVideo(input));
+    // fetchData(
+    //   eslint-disable-next-line max-len
+    //   `https://youtube.googleapis.com/youtube/v3/search?&q=${input}&part=snippet&key=${process.env.REACT_APP_YOUTUBE_APY_KEY}&maxResults=20`
+    // );
     setInput('');
   };
-  useEffect(() => {
-    setList(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setList(data);
+  // }, [data]);
 
   return (
     <div className={styles.searchBar}>
