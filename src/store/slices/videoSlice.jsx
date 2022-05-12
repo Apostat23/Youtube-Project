@@ -4,6 +4,7 @@ import { fetchVideo } from '../services/videoService';
 const videoSlice = createSlice({
   name: 'video',
   initialState: {
+    favouriteList: [],
     videos: null,
     isLoading: false,
     isError: false,
@@ -11,6 +12,10 @@ const videoSlice = createSlice({
   reducers: {
     setVideo: (state, action) => {
       state.videos = action.payload;
+    },
+    addFavourite (state, action) {
+      console.log(action);
+      state.favouriteList.push(action.payload);
     },
   },
   extraReducers: {
@@ -21,7 +26,7 @@ const videoSlice = createSlice({
     [fetchVideo.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.isError = false;
-      state.videos = [...action.payload.items];
+      state.videos = action.payload.items;
     },
     [fetchVideo.rejected]: (state, action) => {
       state.isLoading = false;
@@ -30,5 +35,5 @@ const videoSlice = createSlice({
   },
 });
 
-export const { setVideo } = videoSlice.actions;
+export const { setVideo, addFavourite } = videoSlice.actions;
 export default videoSlice.reducer;
